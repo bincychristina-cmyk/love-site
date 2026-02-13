@@ -64,7 +64,7 @@ button:hover { background-color: #ff1493; }
     <source src="love_theme.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PAGE 0 OPENING -->
+<!-- PAGE 0 -->
 <div class="page" id="page0" style="display:block;">
     <h1>Our Journey Together 💖</h1>
 
@@ -91,7 +91,7 @@ button:hover { background-color: #ff1493; }
         I am here and I am going to keep being here every day  
         for the rest of our lives ❤️✨
     </p>
-    <img src="dec19.jpeg">">
+    <img src="december 19 2020.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
 </div>
@@ -115,7 +115,7 @@ button:hover { background-color: #ff1493; }
         When I sit behind you on the bike,  
         I feel like life is simple and beautiful..!!
     </p>
-    <img src="bike.jpeg">
+    <img src="september 3rd 2023.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
 </div>
@@ -129,7 +129,7 @@ button:hover { background-color: #ff1493; }
         not in days or years or decades…  
         it ran in a heartbeat ❤️✨
     </p>
-    <img src="jan1.jpeg">
+    <img src="january 1 2025.jpeg">
     <br>
     <button onclick="nextPage()">Next ➜</button>
 </div>
@@ -145,7 +145,7 @@ button:hover { background-color: #ff1493; }
     <button onclick="nextPage()">Next ➜</button>
 </div>
 
-<!-- PAGE 6 FINAL -->
+<!-- PAGE 6 -->
 <div class="page" id="page6">
     <h1>Will You Be My Valentine? 💖</h1>
 
@@ -167,15 +167,16 @@ button:hover { background-color: #ff1493; }
 <script>
 let currentPage = 0;
 
-// Days counter from Jan 1 2025
-let startDate = new Date("January 1, 2025");
+// Counter from Dec 19 2022
+let startDate = new Date("December 19, 2022");
 let today = new Date();
 let difference = today - startDate;
 let days = Math.floor(difference / (1000*60*60*24));
 document.getElementById("daysCount").innerText = days + " Days 💕";
 
 function startStory() {
-    document.getElementById("bgMusic").play();
+    let music = document.getElementById("bgMusic");
+    music.play().catch(()=>{});
     nextPage();
 }
 
@@ -192,8 +193,13 @@ function sayYes() {
 
 function moveButton() {
     let button = document.getElementById("noBtn");
-    let x = Math.floor(Math.random()*250);
-    let y = Math.floor(Math.random()*300);
+
+    let maxX = window.innerWidth - 120;
+    let maxY = window.innerHeight - 80;
+
+    let x = Math.random() * maxX;
+    let y = Math.random() * maxY;
+
     button.style.left = x + "px";
     button.style.top = y + "px";
 }
@@ -201,4 +207,3 @@ function moveButton() {
 
 </body>
 </html>
-
