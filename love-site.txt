@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Story 💕</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ffc0cb, #ffe4e1);
+    text-align: center;
+    color: #8b004f;
+    overflow-x: hidden;
+}
+
+.page {
+    display: none;
+    padding: 40px 20px;
+    min-height: 100vh;
+    position: relative;
+    transition: all 0.6s ease;
+}
+
+.page h1 { font-size: 28px; }
+.page p { font-size: 18px; margin: 20px 0; }
+
+img {
+    width: 85%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,105,180,0.5);
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #ff69b4;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover { background-color: #ff1493; }
+
+.yesBtn {
+    background-color: #ff1493;
+    font-size: 18px;
+    padding: 15px 35px;
+}
+
+#noBtn { position: absolute; }
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="love_theme.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 0 OPENING -->
+<div class="page" id="page0" style="display:block;">
+    <h1>Our Journey Together 💖</h1>
+
+    <p>
+        Every day with you is my favorite day ✨💌  
+        Our story is written in heartbeats and forever moments 💕
+    </p>
+
+    <button onclick="window.open('https://www.jiosaavn.com/song/i-think-they-call-this-love-cover/KV4ZCQIFb0Y', '_blank')">
+        Play Our Song 🎵
+    </button>
+
+    <p>
+        We have been together for <span id="daysCount"></span> and counting... 💖
+    </p>
+
+    <button onclick="startStory()">Start Our Story ➜</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+    <h1>December 19, 2020 💌</h1>
+    <p>
+        I am here and I am going to keep being here every day  
+        for the rest of our lives ❤️✨
+    </p>
+    <img src="dec19.jpg.jpeg">
+    <br>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>After A Long Struggle 💞</h1>
+    <p>
+        Your patience, your kindness, your love…  
+        it all won my heart ❤️  
+        I am grateful for every effort you made 🥰
+    </p>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>September 3, 2023 🏍️💖</h1>
+    <p>
+        A bike ride with you feels like freedom on two wheels… 💕  
+        When I sit behind you on the bike,  
+        I feel like life is simple and beautiful..!!
+    </p>
+    <img src="bike.jpg.jpeg">
+    <br>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>January 1, 2025 💍</h1>
+    <p>
+        For the first time our eyes met…  
+        Time didn’t run in minutes or hours,  
+        not in days or years or decades…  
+        it ran in a heartbeat ❤️✨
+    </p>
+    <img src="jan1.jpg.jpeg">
+    <br>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+    <h1>Happy Valentine's Day ❤️</h1>
+    <p style="color:#d1487a;">
+        No distance can ever reduce my love for you.  
+        Every moment with you is a treasure,  
+        and I want to create countless more memories together 💕
+    </p>
+    <button onclick="nextPage()">Next ➜</button>
+</div>
+
+<!-- PAGE 6 FINAL -->
+<div class="page" id="page6">
+    <h1>Will You Be My Valentine? 💖</h1>
+
+    <p style="color:#ff4f91;">
+        Every heartbeat whispers your name…  
+        I can’t imagine my life without you 🥰  
+        Will you be my Valentine forever? 💖💌
+    </p>
+
+    <button class="yesBtn" onclick="sayYes()">Yes 💕</button>
+
+    <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">
+        No 😜
+    </button>
+
+    <p id="response" style="margin-top:60px; font-size:20px;"></p>
+</div>
+
+<script>
+let currentPage = 0;
+
+// Days counter from Jan 1 2025
+let startDate = new Date("January 1, 2025");
+let today = new Date();
+let difference = today - startDate;
+let days = Math.floor(difference / (1000*60*60*24));
+document.getElementById("daysCount").innerText = days + " Days 💕";
+
+function startStory() {
+    document.getElementById("bgMusic").play();
+    nextPage();
+}
+
+function nextPage() {
+    document.getElementById("page" + currentPage).style.display = "none";
+    currentPage++;
+    document.getElementById("page" + currentPage).style.display = "block";
+}
+
+function sayYes() {
+    document.getElementById("response").innerHTML =
+    "Yayyyy 😭💖 I love you so much! Forever us ❤️";
+}
+
+function moveButton() {
+    let button = document.getElementById("noBtn");
+    let x = Math.floor(Math.random()*250);
+    let y = Math.floor(Math.random()*300);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>
